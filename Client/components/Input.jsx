@@ -10,7 +10,7 @@ const Input = (props) => {
     return (
         <View style={styles.container}>
             <Text style={styles.label}>{props.label}</Text>
-            <TextInput style={styles.input} placeholder={props.placeholder} onChangeText={text => actualizar(text)} />
+            <TextInput secureTextEntry={props.secureTextEntry} style={styles.input} placeholder={props.placeholder} onChangeText={text => actualizar(text)} />
         </View>
     );
 }

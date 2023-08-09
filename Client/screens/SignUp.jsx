@@ -20,24 +20,24 @@ export default function SignUp() {
       },
       body: JSON.stringify(user)
     }
-    fetch('http://localhost:5000/', options)
+    fetch('http://localhost:5000/register', options)
       .then(response => response.json())
       .then(response => {
         console.log(response)
-        if (response.message === 'authenticated') setMessage('Usuario autenticado correctamente')
-        else setMessage('Los datos ingresados no son correctos')
+        if (response.message === 'user created') setMessage('Usuario creado')
+        else setMessage('El usuario ya existe')
       })
   }
 
   return (
       <View>
         <Text style={styles.text}>Sign Up</Text>
-        <Input label='Username' placeholder='Ingrese su Nombre de Usuario' setUsername={setUsername} />
-        <Input label='Password' placeholder='Ingrese su Contraseña' setPassword={setPassword} />
+        <Input label='Username' placeholder='Ingrese su Nombre de Usuario' setUsername={setUsername} secureTextEntry={false} />
+        <Input label='Password' placeholder='Ingrese su Contraseña' setPassword={setPassword} secureTextEntry={true} />
         <TouchableOpacity style={styles.boton} onPress={signUp}>
-          <Text style={styles.buttonText}>Ingresar</Text>
+          <Text style={styles.buttonText}>Registrarse</Text>
         </TouchableOpacity>
-        <Text>Don't have an account? </Text>
+        <Text style={{padding:10}}>Already have an account? </Text>
         <Text style={styles.message}>{message}</Text>
       </View>
   )

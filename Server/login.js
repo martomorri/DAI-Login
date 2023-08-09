@@ -1,6 +1,10 @@
-export const login = (body, user) => {
+export const login = (body, users) => {
     console.log(body)
     const { username, pass } = body
-    if (username === user.username && pass === user.pass) return true
+    let i = 0
+    while (i < users.length) {
+        if (username === users[i].username && pass === users[i].pass) return true
+        i++
+    }
     return false
 }
