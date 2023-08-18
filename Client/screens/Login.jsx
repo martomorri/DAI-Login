@@ -1,4 +1,5 @@
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import { Link } from '@react-navigation/native'
 import Input from '../components/Input'
 import React from 'react'
 
@@ -37,7 +38,7 @@ export default function Login() {
         <TouchableOpacity style={styles.boton} onPress={login}>
           <Text style={styles.buttonText}>Ingresar</Text>
         </TouchableOpacity>
-        <Text style={{padding: 10}}>Don't have an account? </Text>
+        <Text style={{padding: 10}}>Don't have an account? <Link style={styles.link} to={{ screen: 'SignUp'}}>Sign Up</Link></Text>
         <Text style={styles.message}>{message}</Text>
       </View>
   )
@@ -69,5 +70,9 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 18,
     color: 'black'
+  },
+  link: {
+    color: 'blue',
+    textDecorationLine: 'underline'
   }
 })

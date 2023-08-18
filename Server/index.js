@@ -7,14 +7,13 @@ import config from './dbconfig.js'
 
 let pool = await sql.connect(config)
 
-const users = await getUsers()
+let users = await getUsers()
 
 async function getUsers() {
     let result = await pool.request().execute('getUsers')
+    console.log(result.recordsets[0])
     return result.recordsets[0]
 }
-
-console.log(users)
 
 const app = express()
 const port = 5000
@@ -39,6 +38,7 @@ app.post('/register', async (req, res) => {
         .input('pass', sql.NVarChar(50), pass)
         .execute('insertUser');
         res.status(201).send({'message': 'user created'})
+        users = await getUsers()
     }
     else res.status(400).send({'message': 'existent user'})
 })

@@ -1,4 +1,5 @@
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import { Link } from '@react-navigation/native'
 import Input from '../components/Input'
 import React from 'react'
 
@@ -32,12 +33,12 @@ export default function SignUp() {
   return (
       <View>
         <Text style={styles.text}>Sign Up</Text>
-        <Input label='Username' placeholder='Ingrese su Nombre de Usuario' setUsername={setUsername} secureTextEntry={false} />
-        <Input label='Password' placeholder='Ingrese su Contraseña' setPassword={setPassword} secureTextEntry={true} />
+        <Input label='Username' placeholder='Ingrese un Nombre de Usuario' setUsername={setUsername} secureTextEntry={false} />
+        <Input label='Password' placeholder='Ingrese una Contraseña' setPassword={setPassword} secureTextEntry={true} />
         <TouchableOpacity style={styles.boton} onPress={signUp}>
           <Text style={styles.buttonText}>Registrarse</Text>
         </TouchableOpacity>
-        <Text style={{padding:10}}>Already have an account? </Text>
+        <Text style={{padding:10}}>Already have an account? <Link style={styles.link} to={{ screen: 'Login'}}>Login</Link></Text>
         <Text style={styles.message}>{message}</Text>
       </View>
   )
@@ -69,5 +70,9 @@ const styles = StyleSheet.create({
     padding: 10,
     fontSize: 18,
     color: 'black'
+  },
+  link: {
+    color: 'blue',
+    textDecorationLine: 'underline'
   }
 })

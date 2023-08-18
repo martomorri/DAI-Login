@@ -1,5 +1,4 @@
 export const register = (body, users) => {
-    console.log(body)
     const { username } = body
     let i = 0
     while (i < users.length) {
