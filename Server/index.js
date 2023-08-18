@@ -2,11 +2,19 @@ import express from 'express'
 import cors from 'cors'
 import { login } from './login.js'
 import { register } from './register.js'
+import sql from 'mssql'
+import config from './dbconfig.js'
 
-const users = [{
-    username: 'aloteymorro',
-    pass: 'dephished'
-}]
+let pool = await sql.connect(config)
+
+const users = await getUsers()
+
+async function getUsers() {
+    let result = await pool.request().execute('getUsers')
+    return result.recordsets[0]
+}
+
+console.log(users)
 
 const app = express()
 const port = 5000
@@ -22,7 +30,16 @@ app.post('/login', async (req, res) => {
 
 app.post('/register', async (req, res) => {
     const return_register = await register(req.body, users)
-    if (return_register) res.status(201).send({'message': 'user created'})
+    if (return_register) {
+        console.log(req.body)
+        const { username, pass } = req.body
+        const request = new sql.Request(pool)
+        request
+        .input('username', sql.NVarChar(50), username)
+        .input('pass', sql.NVarChar(50), pass)
+        .execute('insertUser');
+        res.status(201).send({'message': 'user created'})
+    }
     else res.status(400).send({'message': 'existent user'})
 })
 
