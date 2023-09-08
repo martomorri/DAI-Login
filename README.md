@@ -9,12 +9,12 @@
 # 2. Abrir y ejecutar la API de Node
 
 1. Abrir carpeta de Node: cd Server/
-2. Ejecutar: npm i
-3. Ejecutar en esa terminal: npm run start
+2. Ejecutar: ### `npm i`
+3. Ejecutar en esa terminal: ### `npm run start`
 
 # 3. Abrir y ejecutar el proyecto de React Native (RN)
 
 1. En otra terminal abrir carpeta de RN: cd Client/
-2. Ejecutar: npm i
-3. En la misma terminal ejecutar: expo start --tunnel
+2. Ejecutar: ### `npm i`
+3. En la misma terminal ejecutar: ### `expo start --tunnel`
 4. Cuando nos pregunte si queremos instalar el tunnel: y
