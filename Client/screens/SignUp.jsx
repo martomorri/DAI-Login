@@ -25,7 +25,10 @@ export default function SignUp() {
       .then(response => response.json())
       .then(response => {
         console.log(response)
-        if (response.message === 'user created') setMessage('Usuario creado')
+        if (response.message === 'user created') {
+          setMessage('Usuario creado')
+          navigation.navigate('Home', {user})
+        }
         else setMessage('El usuario ya existe')
       })
   }

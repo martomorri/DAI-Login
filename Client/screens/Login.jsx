@@ -3,7 +3,7 @@ import { Link } from '@react-navigation/native'
 import Input from '../components/Input'
 import React from 'react'
 
-export default function Login() {
+function Login({ navigation }) {
   const [username, setUsername] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [message, setMessage] = React.useState('')
@@ -25,7 +25,10 @@ export default function Login() {
       .then(response => response.json())
       .then(response => {
         console.log(response)
-        if (response.message === 'authenticated') setMessage('Usuario autenticado correctamente')
+        if (response.message === 'authenticated') {
+          setMessage('Usuario autenticado correctamente')
+          navigation.navigate('Home', {user})
+        }
         else setMessage('Los datos ingresados no son correctos')
       })
   }
@@ -76,3 +79,5 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline'
   }
 })
+
+export default Login
