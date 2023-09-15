@@ -7,7 +7,7 @@ export default function Perfil({ route, navigation }) {
         <View>
             <Text style={styles.text}>{perfil.nombre}</Text>
             <Text style={styles.text}>{perfil.apellido}</Text>
-            <TouchableOpacity style={styles.boton} onPress={navigation.navigate('FormPerfil')}>
+            <TouchableOpacity style={styles.boton}>
                 <Text style={styles.buttonText}>Editar perfil</Text>
             </TouchableOpacity>
         </View>

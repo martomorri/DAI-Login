@@ -9,6 +9,8 @@ let pool = await sql.connect(config)
 
 let users = await getUsers()
 
+let user_actual
+
 async function getUsers() {
     let result = await pool.request().execute('getUsers')
     console.log(result.recordsets[0])
@@ -23,6 +25,8 @@ app.use(express.json())
 
 app.post('/login', async (req, res) => {
     const return_login = await login(req.body, users)
+    user_actual = req.body
+    console.log(user_actual)
     if (return_login) res.status(200).send({ 'message': 'authenticated' })
     else res.status(404).send({ 'message': 'user not found' })
 })
@@ -46,12 +50,29 @@ app.post('/register', async (req, res) => {
 app.post('/createProfile', async (req, res) => {
     console.log(req.body)
     const { nombre, apellido } = req.body
-    const request = new sql.Request(pool)
-    request
+    let result = await pool.request()
+        .input('username', sql.NVarChar(50), user_actual.username)
+        .execute('getUserActual');
+    const fk_usuario = result.recordsets[0][0].id
+    console.log(fk_usuario)
+    const requestProfile = new sql.Request(pool)
+    requestProfile
         .input('nombre', sql.NVarChar(50), nombre)
         .input('apellido', sql.NVarChar(50), apellido)
+        .input('fk_usuario', sql.Int, fk_usuario)
         .execute('createProfile');
     res.status(201).send({ 'message': 'profile created' })
+})
+
+app.post('/getProfile', async (req, res) => {
+    const { username, pass } = req.body
+    let user = await pool.request()
+        .input('username', sql.NVarChar(50), username)
+        .execute('getUserActual');
+    const fk_usuario = user.recordsets[0][0].id
+    let result = await pool.request().input('fk_usuario', sql.Int, fk_usuario).excute('getProfile')
+    let profile = result.recordsets[0][0]
+    profile ? res.status(200).send({ 'nombre': profile.nombre, 'apellido': profile.apellido, 'message': 'profile found' }) : res.status(404).send({ 'message': 'profile not found' })
 })
 
 app.listen(port, () => {
