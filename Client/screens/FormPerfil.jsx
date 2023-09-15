@@ -55,7 +55,7 @@ export default function FormPerfil({ route, navigation }) {
     }
 
     return (
-        <View  style={commonStyles.container}>
+        <View style={commonStyles.container}>
             <Text style={commonStyles.header}>Bienvenido</Text>
             <Input label='Nombre' placeholder='Ingrese su Nombre' setUsername={setNombre} secureTextEntry={false} />
             <Input label='Apellido' placeholder='Ingrese su Apellido' setPassword={setApellido} secureTextEntry={false} />
