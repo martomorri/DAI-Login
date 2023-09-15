@@ -2,6 +2,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import { Link } from '@react-navigation/native'
 import Input from '../components/Input'
 import React from 'react'
+import { commonStyles } from '../styles'
 
 export default function SignUp() {
   const [username, setUsername] = React.useState('')
@@ -34,12 +35,12 @@ export default function SignUp() {
   }
 
   return (
-      <View>
-        <Text style={styles.text}>Sign Up</Text>
+      <View style={commonStyles.container}>
+        <Text style={commonStyles.header}>Sign Up</Text>
         <Input label='Username' placeholder='Ingrese un Nombre de Usuario' setUsername={setUsername} secureTextEntry={false} />
         <Input label='Password' placeholder='Ingrese una Contraseña' setPassword={setPassword} secureTextEntry={true} />
-        <TouchableOpacity style={styles.boton} onPress={signUp}>
-          <Text style={styles.buttonText}>Registrarse</Text>
+        <TouchableOpacity style={commonStyles.editButton} onPress={signUp}>
+          <Text style={commonStyles.buttonText}>Registrarse</Text>
         </TouchableOpacity>
         <Text style={{padding:10}}>Already have an account? <Link style={styles.link} to={{ screen: 'Login'}}>Login</Link></Text>
         <Text style={styles.message}>{message}</Text>
@@ -48,27 +49,6 @@ export default function SignUp() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 24,
-    backgroundColor: "#fff",
-  },
-  text: {
-    padding: 10,
-    textAlign: "center",
-    marginBottom: 10,
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  boton: {
-    backgroundColor: "blue",
-    alignItems: "center",
-    padding: 10,
-    margin: 10,
-  },
-  buttonText: {
-    color: "white",
-  },
   message: {
     padding: 10,
     fontSize: 18,

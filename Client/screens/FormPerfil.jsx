@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import Input from '../components/Input'
 import React from 'react'
+import { commonStyles } from '../styles'
 
 export default function FormPerfil({ route, navigation }) {
     const { hasProfile, prevProfile } = route.params
@@ -54,32 +55,13 @@ export default function FormPerfil({ route, navigation }) {
     }
 
     return (
-        <View>
-            <Text style={styles.text}>Bienvenido</Text>
+        <View  style={commonStyles.container}>
+            <Text style={commonStyles.header}>Bienvenido</Text>
             <Input label='Nombre' placeholder='Ingrese su Nombre' setUsername={setNombre} secureTextEntry={false} />
             <Input label='Apellido' placeholder='Ingrese su Apellido' setPassword={setApellido} secureTextEntry={false} />
-            <TouchableOpacity style={styles.boton} onPress={crearPerfil}>
-                <Text style={styles.buttonText}>Cargar Datos</Text>
+            <TouchableOpacity style={commonStyles.editButton} onPress={crearPerfil}>
+                <Text style={commonStyles.buttonText}>Cargar Datos</Text>
             </TouchableOpacity>
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    text: {
-        padding: 10,
-        textAlign: "center",
-        marginBottom: 10,
-        fontSize: 24,
-        fontWeight: "bold",
-    },
-    boton: {
-        backgroundColor: "blue",
-        alignItems: "center",
-        padding: 10,
-        margin: 10,
-    },
-    buttonText: {
-        color: "white",
-    },
-})

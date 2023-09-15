@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { commonStyles } from '../styles'
 
 export default function Home({ route, navigation }) {
     const { user } = route.params
@@ -24,41 +25,30 @@ export default function Home({ route, navigation }) {
 
 
     return isLoading ? (
-        <View>
-            <Text style={styles.text}>Cargando...</Text>
+        <View style={commonStyles.container}>
+            <Text style={commonStyles.header}>Cargando...</Text>
         </View>
     ) : hasProfile ? (
-        <View>
-            <Text style={styles.text}>Bienvenido {profile.nombre} {profile.apellido}</Text>
-            <TouchableOpacity style={styles.boton} onPress={() => navigation.navigate('Perfil', { perfil: profile })}>
-                <Text style={styles.buttonText}>Ver perfil</Text>
+        <View style={commonStyles.container}>
+            <Text style={commonStyles.header}>Bienvenido {profile.nombre} {profile.apellido}</Text>
+            <TouchableOpacity
+                style={commonStyles.editButton}
+                onPress={() =>
+                    navigation.navigate('Perfil', { perfil: profile })
+                }
+            >
+                <Text style={commonStyles.buttonText}>Ver perfil</Text>
             </TouchableOpacity>
         </View>
     ) : (
-        <View>
-            <Text style={styles.text}>Bienvenido {user.username}</Text>
-            <TouchableOpacity style={styles.boton} onPress={() => navigation.navigate('FormPerfil', { hasProfile: hasProfile, prevProfile: null })}>
-                <Text style={styles.buttonText}>Completa tu perfil</Text>
+        <View style={commonStyles.container}>
+            <Text style={commonStyles.header}>Bienvenido {user.username}</Text>
+            <TouchableOpacity
+                style={commonStyles.editButton}
+                onPress={() => navigation.navigate('FormPerfil', { hasProfile: hasProfile, prevProfile: null })}
+            >
+                <Text style={commonStyles.buttonText}>Completa tu perfil</Text>
             </TouchableOpacity>
         </View>
-    )
+    );
 }
-
-const styles = StyleSheet.create({
-    text: {
-        padding: 10,
-        textAlign: "center",
-        marginBottom: 10,
-        fontSize: 24,
-        fontWeight: "bold",
-    },
-    boton: {
-        backgroundColor: "blue",
-        alignItems: "center",
-        padding: 10,
-        margin: 10,
-    },
-    buttonText: {
-        color: "white",
-    },
-})

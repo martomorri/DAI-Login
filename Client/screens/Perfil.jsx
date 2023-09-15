@@ -1,34 +1,31 @@
+import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { commonStyles } from '../styles'
 
 export default function Perfil({ route, navigation }) {
-    const { perfil } = route.params
+  const { perfil } = route.params
 
-    return (
-        <View>
-            <Text style={styles.text}>Nombre: {perfil.nombre}</Text>
-            <Text style={styles.text}>Apellido: {perfil.apellido}</Text>
-            <TouchableOpacity style={styles.boton} onPress={() => navigation.navigate('FormPerfil', { hasProfile: true, prevProfile: perfil })}>
-                <Text style={styles.buttonText}>Editar perfil</Text>
-            </TouchableOpacity>
+  return (
+    <View style={commonStyles.container}>
+      <Text style={commonStyles.header}>Perfil de Usuario</Text>
+      <View style={commonStyles.profileInfo}>
+        <View style={commonStyles.field}>
+          <Text style={commonStyles.fieldLabel}>Nombre:</Text>
+          <Text style={commonStyles.fieldValue}>{perfil.nombre}</Text>
         </View>
-    )
+        <View style={commonStyles.field}>
+          <Text style={commonStyles.fieldLabel}>Apellido:</Text>
+          <Text style={commonStyles.fieldValue}>{perfil.apellido}</Text>
+        </View>
+      </View>
+      <TouchableOpacity
+        style={commonStyles.editButton}
+        onPress={() =>
+          navigation.navigate('FormPerfil', { hasProfile: true, prevProfile: perfil })
+        }
+      >
+        <Text style={commonStyles.buttonText}>Editar perfil</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
-
-const styles = StyleSheet.create({
-    text: {
-        padding: 10,
-        textAlign: "center",
-        marginBottom: 10,
-        fontSize: 24,
-        fontWeight: "bold",
-    },
-    boton: {
-        backgroundColor: "blue",
-        alignItems: "center",
-        padding: 10,
-        margin: 10,
-    },
-    buttonText: {
-        color: "white",
-    },
-})
