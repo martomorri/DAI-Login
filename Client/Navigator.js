@@ -13,11 +13,11 @@ export default function Navigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="FormPerfil" component={FormPerfil} />
-        <Stack.Screen name="Perfil" component={Perfil} />
+        <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
+        <Stack.Screen options={{ headerShown: false }} name="Home" component={Home} />
+        <Stack.Screen options={{ headerShown: false }} name="SignUp" component={SignUp} />
+        <Stack.Screen options={{ headerShown: false }} name="FormPerfil" component={FormPerfil} />
+        <Stack.Screen options={{ headerShown: true }} name="Perfil" component={Perfil} />
       </Stack.Navigator>
     </NavigationContainer>
   );

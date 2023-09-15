@@ -64,15 +64,26 @@ app.post('/createProfile', async (req, res) => {
     res.status(201).send({ 'message': 'profile created' })
 })
 
-app.post('/getProfile', async (req, res) => {
-    const { username, pass } = req.body
+app.get('/getProfile/:username', async (req, res) => {
     let user = await pool.request()
-        .input('username', sql.NVarChar(50), username)
+        .input('username', sql.NVarChar(50), req.params.username)
         .execute('getUserActual');
     const fk_usuario = user.recordsets[0][0].id
-    let result = await pool.request().input('fk_usuario', sql.Int, fk_usuario).excute('getProfile')
+    let result = await pool.request().input('fk_usuario', sql.Int, fk_usuario).execute('getProfile')
     let profile = result.recordsets[0][0]
-    profile ? res.status(200).send({ 'nombre': profile.nombre, 'apellido': profile.apellido, 'message': 'profile found' }) : res.status(404).send({ 'message': 'profile not found' })
+    profile ? res.status(200).send({ 'id': profile.id, 'nombre': profile.nombre, 'apellido': profile.apellido, 'message': 'profile found' }) : res.status(404).send({ 'message': 'profile not found' })
+})
+
+app.put('/updateProfile/:id', async (req, res) => {
+    const { nombre, apellido } = req.body
+    const request = new sql.Request(pool);
+    console.log(req.params.id)
+    request
+        .input('id', sql.Int, req.params.id)
+        .input('nombre', sql.VarChar(50), nombre)
+        .input('apellido', sql.VarChar(50), apellido)
+        .execute('updateProfile');
+    res.status(202).send({ 'message': 'profile updated' })
 })
 
 app.listen(port, () => {
