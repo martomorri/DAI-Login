@@ -2,7 +2,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="https://png.pngtree.com/png-clipart/20210711/original/pngtree-gradient-gray-login-interface-png-image_6523000.jpg" alt="Logo" width="80" height="80">
+    <img src="https://static.vecteezy.com/system/resources/previews/014/219/604/non_2x/safety-login-page-3d-illustration-free-png.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Login DAI</h3>
@@ -53,7 +53,7 @@ Este proyecto se trata de realizar un ejemplo de registro (conectado con una bas
 
 Estos son los frameworks/librerias utilizados en este proyecto.
 
-* [![Node.js][Node.js]][Node.js-url]
+* [![Node][Node.js]][Node.js-url]
 * [![React Native][ReactNative]][ReactNative-url]
 
 <p align="right">(<a href="#readme-top">Volver al inicio</a>)</p>
@@ -153,5 +153,5 @@ Estas son las librerias y recursos utilizados en nuestro proyecto
 <!-- MARKDOWN LINKS E IMAGENES -->
 [ReactNative]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [ReactNative-url]: https://reactnative.dev/
-[Node.js]: https://nodejs.org/static/images/logo-hexagon-card.png
+[Node.js]: https://cdn-icons-png.flaticon.com/512/5968/5968322.png
 [Node.js-url]: https://nodejs.org/es
