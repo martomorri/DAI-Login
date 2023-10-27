@@ -6,7 +6,7 @@
   <h3 align="center">Login DAI</h3>
 
   <p align="center">
-    Un ejemplo de Login y Registro con React Native.
+    Un ejemplo de Login y Registro con React Native y Firebase Firestore.
     <br />
   </p>
 </div>
