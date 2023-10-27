@@ -21,7 +21,7 @@ export default function Perfil({ route, navigation }) {
       <TouchableOpacity
         style={commonStyles.editButton}
         onPress={() =>
-          navigation.navigate('FormPerfil', { hasProfile: true, prevProfile: perfil, user_uid: perfil.user_uid })
+          navigation.replace('FormPerfil', { hasProfile: true, prevProfile: perfil, user_uid: perfil.user_uid })
         }
       >
         <Text style={commonStyles.buttonText}>Editar perfil</Text>

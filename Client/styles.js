@@ -38,6 +38,13 @@ export const commonStyles = StyleSheet.create({
         borderRadius: 10,
         margin: 10
     },
+    logoutButton: {
+        backgroundColor: 'red',
+        alignItems: 'center',
+        padding: 15,
+        borderRadius: 10,
+        margin: 10
+    },
     buttonText: {
         color: 'white',
         fontSize: 20,

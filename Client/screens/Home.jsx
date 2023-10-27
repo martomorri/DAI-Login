@@ -4,6 +4,7 @@ import { commonStyles } from '../styles'
 import { dbContext } from '../context/dbContext'
 import { getDocs, query, where, collection } from "firebase/firestore";
 import { userContext } from '../context/userContext';
+import { getAuth } from 'firebase/auth';
 
 export default function Home({ navigation }) {
     const db = React.useContext(dbContext)
@@ -36,7 +37,13 @@ export default function Home({ navigation }) {
         fetchData();
     }, []);
 
-
+    const logout = () => {
+        const auth = getAuth()
+        auth.signOut()
+            .then(
+                navigation.replace("Login")
+            )
+    }
 
     return isLoading ? (
         <View style={commonStyles.container}>
@@ -53,6 +60,12 @@ export default function Home({ navigation }) {
             >
                 <Text style={commonStyles.buttonText}>Ver perfil</Text>
             </TouchableOpacity>
+            <TouchableOpacity
+                style={commonStyles.logoutButton}
+                onPress={logout}
+            >
+                <Text style={commonStyles.buttonText}>Cerrar sesion</Text>
+            </TouchableOpacity>
         </View>
     ) : (
         <View style={commonStyles.container}>
@@ -62,6 +75,12 @@ export default function Home({ navigation }) {
                 onPress={() => navigation.navigate('FormPerfil', { hasProfile: hasProfile, prevProfile: null, user_uid: user.uid })}
             >
                 <Text style={commonStyles.buttonText}>Completa tu perfil</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={commonStyles.logoutButton}
+                onPress={logout}
+            >
+                <Text style={commonStyles.buttonText}>Cerrar sesion</Text>
             </TouchableOpacity>
         </View>
     );
