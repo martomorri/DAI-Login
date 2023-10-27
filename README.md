@@ -1,9 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="https://static.vecteezy.com/system/resources/previews/014/219/604/non_2x/safety-login-page-3d-illustration-free-png.png" alt="Logo" width="80" height="80">
-  </a>
+  <img src="https://static.vecteezy.com/system/resources/previews/014/219/604/non_2x/safety-login-page-3d-illustration-free-png.png" alt="Logo" width="80" height="80">
 
   <h3 align="center">Login DAI</h3>
 
@@ -43,7 +41,7 @@
 <!-- SOBRE EL PROYECTO -->
 ## Sobre el Proyecto
 
-Este proyecto se trata de realizar un ejemplo de registro (conectado con una base de datos en SQL) con React Native para aplicaciones Mobile. A esto se le añaden funciones para crear y editar el perfil de cada usuario.
+Este proyecto se trata de realizar un ejemplo de registro (conectado con una base de datos en Firebase) con React Native para aplicaciones Mobile. A esto se le añaden funciones para crear y editar el perfil de cada usuario.
 
 <p align="right"><a href="#readme-top">Volver al inicio</a></p>
 
@@ -79,30 +77,6 @@ Los requisitos necesarios son tener Node.js y NPM intalados en el dispositivo.
    ```sh
    git clone --depth 1 https://github.com/martomorri/DAI-Login.git
    ```
-   
-* Configurar Base de Datos
-  
-   1. Abrir MS SQL Server Management Studio 18
-   2. Antes de apretar el boton de "Connect", copiar el nombre de nuestro dispositivo/host, guardarlo en algun lugar que luego lo necesitaremos
-   3. Abrir en esta aplicacion (`ctrl + O`) el archivo encontrado en `Server/data/data.sql` y ejecutarlo con el boton de Execute (`F5`)
-   4. Luego abrir el archivo (`ctrl + O`) Server/data/user.sql y ejecutarlo (F5)
-   5. Crear en la carpeta `Server/` un archivo llamado `.env` que contenga lo mismo que el archivo llamado `.env-example` pero cambiando el nombre del host por el que copiamos en el momento de conectarnos a la base de datos
-      
-* Abrir y ejecutar la API de Node.js
-  
-   1. Abrir carpeta de Node:
-   ```sh
-   cd Server/
-   ```
-   2. Instalar los paquetes de NPM
-   ```sh
-   npm i
-   ```
-   3. Correr la API de Node.js
-   ```sh
-   npm run start
-   ```
-   
 * Abrir y ejecutar el proyecto de React Native (RN)
   
   1. En otra terminal abrir carpeta de RN:
@@ -139,6 +113,7 @@ Este proyecto puede ser utilizado para generar un registro simple para cualquier
 - [x] Login
 - [x] Registro
 - [x] Home
+- [x] Cerrar sesion
 - [x] Perfil
     - [x] Crear Perfil
     - [x] Editar Perfil
@@ -150,8 +125,7 @@ Este proyecto puede ser utilizado para generar un registro simple para cualquier
 Estas son las librerias y recursos utilizados en nuestro proyecto
 
 * [React Navigation](https://reactnavigation.org/)
-* [Express.js](https://expressjs.com/es/)
-* [MSSQL](https://www.npmjs.com/package/mssql)
+* [Firebase](https://firebase.google.com/?hl=es-419)
 
 <p align="right"><a href="#readme-top">Volver al inicio</a></p>
 
