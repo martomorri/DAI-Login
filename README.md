@@ -109,7 +109,7 @@ Este proyecto puede ser utilizado para generar un registro simple para cualquier
 <!-- MAPA DEL PROYECTO -->
 ## Mapa del Proyecto
 
-- [x] API en Node
+- [x] Cloud Firestore
 - [x] Login
 - [x] Registro
 - [x] Home
