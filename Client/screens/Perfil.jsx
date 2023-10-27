@@ -26,6 +26,14 @@ export default function Perfil({ route, navigation }) {
       >
         <Text style={commonStyles.buttonText}>Editar perfil</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={commonStyles.volverButton}
+        onPress={() =>
+          navigation.replace('Home')
+        }
+      >
+        <Text style={commonStyles.buttonText}>Volver a la Home</Text>
+      </TouchableOpacity>
     </View>
   );
 }

@@ -18,9 +18,10 @@ function Login({ navigation }) {
     signInWithEmailAndPassword(auth, username, password)
     .then((userCredential) => {
       const userLogged = userCredential.user;
+      const updateUserContext = async () => await setUser(userLogged)
+      updateUserContext()
       setMessage('Usuario autenticado correctamente')
-      setUser(userLogged)
-      navigation.navigate('Home')
+      navigation.replace('Home')
     })
     .catch((error) => {
       console.log(error)
@@ -30,13 +31,13 @@ function Login({ navigation }) {
 
   return (
     <View style={commonStyles.container}>
-      <Text style={commonStyles.header}>Login</Text>
-      <Input label='Username' placeholder='Ingrese su Nombre de Usuario' setUsername={setUsername} secureTextEntry={false} />
-      <Input label='Password' placeholder='Ingrese su Contraseña' setPassword={setPassword} secureTextEntry={true} />
+      <Text style={commonStyles.header}>Ingresar</Text>
+      <Input label='Nombre de Usuario' placeholder='Ingrese su Nombre de Usuario' setUsername={setUsername} secureTextEntry={false} />
+      <Input label='Contraseña' placeholder='Ingrese su Contraseña' setPassword={setPassword} secureTextEntry={true} />
       <TouchableOpacity style={commonStyles.editButton} onPress={login}>
         <Text style={commonStyles.buttonText}>Ingresar</Text>
       </TouchableOpacity>
-      <Text style={{ padding: 10 }}>Don't have an account? <Link style={styles.link} to={{ screen: 'SignUp' }}>Sign Up</Link></Text>
+      <Text style={{ padding: 10 }}>¿Aun no tienes una cuenta? <Link style={styles.link} to={{ screen: 'SignUp' }}>Registrarse</Link></Text>
       <Text style={styles.message}>{message}</Text>
     </View>
   )

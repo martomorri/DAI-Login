@@ -45,6 +45,13 @@ export const commonStyles = StyleSheet.create({
         borderRadius: 10,
         margin: 10
     },
+    volverButton: {
+        backgroundColor: 'gray',
+        alignItems: 'center',
+        padding: 15,
+        borderRadius: 10,
+        margin: 10
+    },
     buttonText: {
         color: 'white',
         fontSize: 20,

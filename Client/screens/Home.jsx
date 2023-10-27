@@ -55,7 +55,7 @@ export default function Home({ navigation }) {
             <TouchableOpacity
                 style={commonStyles.editButton}
                 onPress={() =>
-                    navigation.navigate('Perfil', { perfil: profile })
+                    navigation.replace('Perfil', { perfil: profile })
                 }
             >
                 <Text style={commonStyles.buttonText}>Ver perfil</Text>
@@ -72,7 +72,7 @@ export default function Home({ navigation }) {
             <Text style={commonStyles.header}>Bienvenido {user.username}</Text>
             <TouchableOpacity
                 style={commonStyles.editButton}
-                onPress={() => navigation.navigate('FormPerfil', { hasProfile: hasProfile, prevProfile: null, user_uid: user.uid })}
+                onPress={() => navigation.replace('FormPerfil', { hasProfile: hasProfile, prevProfile: null, user_uid: user.uid })}
             >
                 <Text style={commonStyles.buttonText}>Completa tu perfil</Text>
             </TouchableOpacity>

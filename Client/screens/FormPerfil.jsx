@@ -56,6 +56,9 @@ export default function FormPerfil({ route, navigation }) {
             <TouchableOpacity style={commonStyles.editButton} onPress={crearPerfil}>
                 <Text style={commonStyles.buttonText}>Cargar Datos</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={commonStyles.volverButton} onPress={() => navigation.navigate('Perfil', { perfil: { nombre: nombre, apellido: apellido, user_uid: user_uid } })}>
+                <Text style={commonStyles.buttonText}>Volver</Text>
+            </TouchableOpacity>
         </View>
     )
 }

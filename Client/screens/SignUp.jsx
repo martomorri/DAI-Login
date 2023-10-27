@@ -6,7 +6,7 @@ import { commonStyles } from '../styles'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { userContext } from '../context/userContext'
 
-export default function SignUp() {
+export default function SignUp({ navigation }) {
   const [username, setUsername] = React.useState('')
   const [password, setPassword] = React.useState('')
   const [message, setMessage] = React.useState('')
@@ -21,7 +21,7 @@ export default function SignUp() {
         console.log(user)
         setUser(user)
         setMessage("Usuario creado")
-        navigation.navigate('Home')
+        navigation.replace('Home')
       })
       .catch((error) => {
         console.error(error)
@@ -31,14 +31,14 @@ export default function SignUp() {
 
   return (
     <View style={commonStyles.container}>
-      <Text style={commonStyles.header}>Sign Up</Text>
+      <Text style={commonStyles.header}>Registrarse</Text>
       <Input label='Username' placeholder='Ingrese un Nombre de Usuario' setUsername={setUsername} secureTextEntry={false} />
       <Input label='Password' placeholder='Ingrese una Contraseña' setPassword={setPassword} secureTextEntry={true} />
       <Text style={{ padding: 10 }}>La contraseña debe tener al menos 6 caracteres</Text>
       <TouchableOpacity style={commonStyles.editButton} onPress={signUp}>
         <Text style={commonStyles.buttonText}>Registrarse</Text>
       </TouchableOpacity>
-      <Text style={{ padding: 10 }}>Already have an account? <Link style={styles.link} to={{ screen: 'Login' }}>Login</Link></Text>
+      <Text style={{ padding: 10 }}>¿Ya tienes una cuenta? <Link style={styles.link} to={{ screen: 'Login' }}>Ingresar</Link></Text>
       <Text style={styles.message}>{message}</Text>
     </View>
   )
