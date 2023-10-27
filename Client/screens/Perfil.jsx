@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { commonStyles } from '../styles'
 
 export default function Perfil({ route, navigation }) {
@@ -21,7 +21,7 @@ export default function Perfil({ route, navigation }) {
       <TouchableOpacity
         style={commonStyles.editButton}
         onPress={() =>
-          navigation.navigate('FormPerfil', { hasProfile: true, prevProfile: perfil })
+          navigation.navigate('FormPerfil', { hasProfile: true, prevProfile: perfil, user_uid: perfil.user_uid })
         }
       >
         <Text style={commonStyles.buttonText}>Editar perfil</Text>

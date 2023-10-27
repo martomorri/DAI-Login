@@ -1,27 +1,41 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { commonStyles } from '../styles'
+import { dbContext } from '../context/dbContext'
+import { getDocs, query, where, collection } from "firebase/firestore";
+import { userContext } from '../context/userContext';
 
-export default function Home({ route, navigation }) {
-    const { user } = route.params
+export default function Home({ navigation }) {
+    const db = React.useContext(dbContext)
+    const { user } = React.useContext(userContext)
     const [hasProfile, setHasProfile] = React.useState(false)
     const [profile, setProfile] = React.useState()
     const [isLoading, setIsLoading] = React.useState(true)
 
+    const perfilRef = collection(db, "perfil")
+    const q = query(perfilRef, where("user_uid", "==", user.uid));
+
     React.useEffect(() => {
-        const url = 'http://localhost:5000/getProfile/' + user.username
-        console.log(url)
-        fetch(url)
-            .then(response => response.json())
-            .then(response => {
-                setHasProfile(response.message === 'profile found')
-                const hasProfileBoca = response.message === 'profile found'
-                hasProfileBoca ? setProfile({ 'id': response.id, 'nombre': response.nombre, 'apellido': response.apellido }) : setProfile()
-            })
-            .finally(
-                setIsLoading(false)
-            )
-    }, [])
+        const fetchData = async () => {
+            try {
+                const querySnapshot = await getDocs(q);
+                const data = [];
+                querySnapshot.forEach((doc) => {
+                    data.push(doc.data());
+                });
+                console.log(data[0])
+                setProfile(data[0])
+                if (data.length > 0) setHasProfile(true)
+            } catch (error) {
+                console.error(error)
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
+
 
 
     return isLoading ? (
@@ -45,7 +59,7 @@ export default function Home({ route, navigation }) {
             <Text style={commonStyles.header}>Bienvenido {user.username}</Text>
             <TouchableOpacity
                 style={commonStyles.editButton}
-                onPress={() => navigation.navigate('FormPerfil', { hasProfile: hasProfile, prevProfile: null })}
+                onPress={() => navigation.navigate('FormPerfil', { hasProfile: hasProfile, prevProfile: null, user_uid: user.uid })}
             >
                 <Text style={commonStyles.buttonText}>Completa tu perfil</Text>
             </TouchableOpacity>
