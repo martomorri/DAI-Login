@@ -15,6 +15,7 @@ function Login({ navigation }) {
   const auth = getAuth();
 
   const login = () => {
+    console.log(username)
     signInWithEmailAndPassword(auth, username, password)
     .then((userCredential) => {
       const userLogged = userCredential.user;
@@ -32,7 +33,7 @@ function Login({ navigation }) {
   return (
     <View style={commonStyles.container}>
       <Text style={commonStyles.header}>Ingresar</Text>
-      <Input label='Nombre de Usuario' placeholder='Ingrese su Nombre de Usuario' setUsername={setUsername} secureTextEntry={false} />
+      <Input label='Mail' placeholder='Ingrese su Mail' setUsername={setUsername} secureTextEntry={false} />
       <Input label='Contraseña' placeholder='Ingrese su Contraseña' setPassword={setPassword} secureTextEntry={true} />
       <TouchableOpacity style={commonStyles.editButton} onPress={login}>
         <Text style={commonStyles.buttonText}>Ingresar</Text>

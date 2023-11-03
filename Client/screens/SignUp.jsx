@@ -32,8 +32,8 @@ export default function SignUp({ navigation }) {
   return (
     <View style={commonStyles.container}>
       <Text style={commonStyles.header}>Registrarse</Text>
-      <Input label='Username' placeholder='Ingrese un Nombre de Usuario' setUsername={setUsername} secureTextEntry={false} />
-      <Input label='Password' placeholder='Ingrese una Contraseña' setPassword={setPassword} secureTextEntry={true} />
+      <Input label='Mail' placeholder='Ingrese un Mail' setUsername={setUsername} secureTextEntry={false} />
+      <Input label='Contraseña' placeholder='Ingrese una Contraseña' setPassword={setPassword} secureTextEntry={true} />
       <Text style={{ padding: 10 }}>La contraseña debe tener al menos 6 caracteres</Text>
       <TouchableOpacity style={commonStyles.editButton} onPress={signUp}>
         <Text style={commonStyles.buttonText}>Registrarse</Text>

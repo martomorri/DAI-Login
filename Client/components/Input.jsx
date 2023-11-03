@@ -3,8 +3,8 @@ import { StyleSheet, TextInput, Text, View } from 'react-native';
 
 const Input = (props) => {
     const actualizar = (text) => {
-        if (props.label === 'Username' || props.label === 'Nombre') props.setUsername(text);
-        else if (props.label === 'Password' || props.label === 'Apellido') props.setPassword(text);
+        if (props.label === 'Mail' || props.label === 'Nombre') props.setUsername(text);
+        else if (props.label === 'Contraseña' || props.label === 'Apellido') props.setPassword(text);
     };
 
     return (
