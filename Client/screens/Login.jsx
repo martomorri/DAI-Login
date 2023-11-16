@@ -1,6 +1,5 @@
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
-import { Link } from '@react-navigation/native'
-import Input from '../components/Input'
+
 import React from 'react'
 import { commonStyles } from '../styles'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
@@ -12,8 +11,6 @@ function Login({ navigation }) {
   const [message, setMessage] = React.useState('')
   const { setUser } = React.useContext(userContext)
 
-  navigation.setOptions({tabBarVisible: false})
-
   const auth = getAuth();
 
   const login = () => {
@@ -23,12 +20,14 @@ function Login({ navigation }) {
       const userLogged = userCredential.user;
       const updateUserContext = async () => await setUser(userLogged)
       updateUserContext()
-      setMessage('Usuario autenticado correctamente')
+      const updateMessage = async () => await setMessage('Usuario autenticado correctamente')
+      updateMessage()
       navigation.navigate('Home')
     })
     .catch((error) => {
       console.log(error)
-      setMessage('Los datos ingresados no son correctos')
+      const updateMessage = async () => await setMessage('Los datos ingresados no son correctos')
+      updateMessage()
     })
   }
 
