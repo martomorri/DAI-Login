@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { ScrollView, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { commonStyles } from '../styles'
 import { dbContext } from '../context/dbContext'
@@ -47,11 +47,11 @@ export default function Home({ navigation }) {
     // }
 
     return (
-        <View style={commonStyles.container}>
+        <ScrollView style={commonStyles.container}>
             {products.map(p => {
                 if (p.id <= 6) return <Card product={p} />
             })}
-        </View>
+        </ScrollView>
     )
     // ) : hasProfile ? (
     //     <View style={commonStyles.container}>

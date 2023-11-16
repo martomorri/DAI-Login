@@ -12,6 +12,8 @@ function Login({ navigation }) {
   const [message, setMessage] = React.useState('')
   const { setUser } = React.useContext(userContext)
 
+  navigation.setOptions({tabBarVisible: false})
+
   const auth = getAuth();
 
   const login = () => {
@@ -22,7 +24,7 @@ function Login({ navigation }) {
       const updateUserContext = async () => await setUser(userLogged)
       updateUserContext()
       setMessage('Usuario autenticado correctamente')
-      navigation.replace('Home')
+      navigation.navigate('Home')
     })
     .catch((error) => {
       console.log(error)

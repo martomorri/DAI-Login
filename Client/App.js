@@ -1,6 +1,6 @@
 import { StyleSheet, SafeAreaView } from 'react-native'
 import Navigator from './Navigator'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { initializeApp } from "firebase/app"
 import { getFirestore } from "firebase/firestore";
 import { dbContext } from './context/dbContext';
@@ -23,17 +23,19 @@ const database = getFirestore(app)
 
 export default function App() {
   const [user, setUser] = useState()
-  const [products, setProducts] = React.useState([])
+  const [products, setProducts] = useState([])
 
   const limit = 100
   const url = `https://dummyjson.com/products?limit=${limit}&skip=0`
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetch(url)
+      .then(res => res.json())
       .then(res => {
+        console.log(res)
         setProducts((prevProductos) => [
           ...prevProductos,
-          ...res.data.products.map((p) => ({
+          ...res.products.map((p) => ({
             id: p.id,
             title: p.title,
             description: p.description,
