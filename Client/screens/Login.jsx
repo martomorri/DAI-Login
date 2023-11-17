@@ -21,20 +21,17 @@ function Login({ navigation }) {
       const userLogged = userCredential.user;
       const updateUserContext = async () => await setUser(userLogged)
       updateUserContext()
-      const updateMessage = async () => await setMessage('Usuario autenticado correctamente')
-      updateMessage()
       navigation.navigate('Inicio')
     })
     .catch((error) => {
       console.log(error)
-      const updateMessage = async () => await setMessage('Los datos ingresados no son correctos')
-      updateMessage()
+      setMessage('Los datos ingresados no son correctos')
     })
   }
 
   return (
     <View style={commonStyles.container}>
-      <Text style={commonStyles.header}>Ingresar</Text>
+      <Text style={commonStyles.header}>Iniciar sesión</Text>
       <Input label='Mail' placeholder='Ingrese su Mail' setUsername={setUsername} secureTextEntry={false} />
       <Input label='Contraseña' placeholder='Ingrese su Contraseña' setPassword={setPassword} secureTextEntry={true} />
       <TouchableOpacity style={commonStyles.editButton} onPress={login}>

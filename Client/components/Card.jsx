@@ -1,15 +1,18 @@
 import React from "react";
 import { commonStyles } from "../styles";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { useNavigation } from '@react-navigation/native'
 
 const Card = ({ product }) => {
+  const navigation = useNavigation()
+
   return (
     <View style={styles.container}>
       <Image source={{ uri: product.thumbnail }} style={styles.image}></Image>
       <Text style={styles.cardTitle}>{product.title}</Text>
-      <Text style={{ fontSize: 20, paddingLeft: 10, color: "#3b3a3a" }}>U$D{product.price}</Text>
-      <Text style={{ fontSize: 16, padding: 10 }}>{product.description}</Text>
-      <TouchableOpacity style={commonStyles.editButton}>
+      <Text style={commonStyles.price}>U$D{product.price}</Text>
+      <Text style={commonStyles.text}>{product.description}</Text>
+      <TouchableOpacity style={commonStyles.editButton} onPress={() => navigation.navigate("Producto", { producto: product })}>
         <Text style={commonStyles.buttonText}>Ver mas</Text>
       </TouchableOpacity>
     </View>

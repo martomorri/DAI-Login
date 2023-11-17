@@ -7,7 +7,7 @@ import { dbContext } from '../context/dbContext'
 
 export default function FormPerfil({ route, navigation }) {
     const db = React.useContext(dbContext)
-    const { hasProfile, prevProfile, user_uid } = route.params
+    const { hasProfile, user_uid } = route.params
 
     console.log(hasProfile)
 
@@ -45,7 +45,7 @@ export default function FormPerfil({ route, navigation }) {
             fetchData();
         }
 
-        navigation.replace('Home');
+        navigation.replace('VerPerfil');
     }
 
     return (
@@ -56,7 +56,7 @@ export default function FormPerfil({ route, navigation }) {
             <TouchableOpacity style={commonStyles.editButton} onPress={crearPerfil}>
                 <Text style={commonStyles.buttonText}>Cargar Datos</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={commonStyles.volverButton} onPress={() => navigation.navigate('Perfil', { perfil: { nombre: nombre, apellido: apellido, user_uid: user_uid } })}>
+            <TouchableOpacity style={commonStyles.volverButton} onPress={() => navigation.navigate('Perfil')}>
                 <Text style={commonStyles.buttonText}>Volver</Text>
             </TouchableOpacity>
         </View>

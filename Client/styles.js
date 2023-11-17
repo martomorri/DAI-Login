@@ -57,4 +57,19 @@ export const commonStyles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
+    image: {
+        flex: 1,
+        width: "100%",
+        height: undefined,
+        aspectRatio: 1.75,
+    },
+    price: {
+        fontSize: 20, 
+        paddingLeft: 10, 
+        color: "#3b3a3a" 
+    },
+    text: {
+        fontSize: 16,
+        padding: 10
+    }
 });

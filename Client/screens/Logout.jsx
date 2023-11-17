@@ -12,7 +12,8 @@ function Logout() {
     }
 
   return (
-    <View style={styles.container}>
+    <View style={commonStyles.container}>
+      <Text style={commonStyles.header}>Cerrar sesión</Text>
       <Text style={{ fontSize: 24, padding: 10, textAlign: "center" }}>
         ¿Está seguro de que quiere salir de la aplicación?
       </Text>
@@ -29,13 +30,6 @@ function Logout() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    marginVertical: 10,
-    marginHorizontal: 10,
-    alignContent: "center",
-    justifyContent: "center",
-  },
   buttonsRow: {
     flexDirection: "row",
     justifyContent: "center",

@@ -20,8 +20,7 @@ export default function SignUp({ navigation }) {
         const user = userCredential.user;
         console.log(user)
         setUser(user)
-        setMessage("Usuario creado")
-        navigation.replace('Home')
+        navigation.navigate('Inicio')
       })
       .catch((error) => {
         console.error(error)

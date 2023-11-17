@@ -2,9 +2,11 @@ import React from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { commonStyles } from '../styles'
 import { userContext } from '../context/userContext'
-import { getAuth } from 'firebase/auth';
+import { dbContext } from '../context/dbContext'
+import { getDocs, query, where, collection } from "firebase/firestore";
 
 export default function Perfil({ navigation }) {
+  const db = React.useContext(dbContext)
   const [hasProfile, setHasProfile] = React.useState(false)
   const [profile, setProfile] = React.useState()
   const { user } = React.useContext(userContext)
@@ -26,20 +28,11 @@ export default function Perfil({ navigation }) {
       } catch (error) {
         console.error(error)
       } finally {
-        setIsLoading(false);
       }
     };
 
     fetchData();
   }, []);
-
-  const logout = () => {
-    const auth = getAuth()
-    auth.signOut()
-      .then(
-        navigation.replace("Login")
-      )
-  }
 
   return hasProfile ? (
     <View style={commonStyles.container}>
@@ -57,7 +50,7 @@ export default function Perfil({ navigation }) {
       <TouchableOpacity
         style={commonStyles.editButton}
         onPress={() =>
-          navigation.replace('FormPerfil', { hasProfile: true, prevProfile: profile, user_uid: profile.user_uid })
+          navigation.navigate('FormPerfil', { hasProfile: true, user_uid: profile.user_uid })
         }
       >
         <Text style={commonStyles.buttonText}>Editar perfil</Text>
@@ -65,14 +58,14 @@ export default function Perfil({ navigation }) {
       <TouchableOpacity
         style={commonStyles.volverButton}
         onPress={() =>
-          navigation.replace('Home')
+          navigation.navigate('Home')
         }
       >
         <Text style={commonStyles.buttonText}>Volver a la Home</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={commonStyles.logoutButton}
-        onPress={logout}
+        onPress={() => navigation.navigate('Salir')}
       >
         <Text style={commonStyles.buttonText}>Cerrar sesion</Text>
       </TouchableOpacity>
@@ -82,21 +75,21 @@ export default function Perfil({ navigation }) {
       <Text style={commonStyles.header}>Bienvenido {user.username}</Text>
       <TouchableOpacity
         style={commonStyles.editButton}
-        onPress={() => navigation.replace('FormPerfil', { hasProfile: hasProfile, prevProfile: null, user_uid: user.uid })}
+        onPress={() => navigation.replace('FormPerfil', { hasProfile: hasProfile, user_uid: user.uid })}
       >
         <Text style={commonStyles.buttonText}>Completa tu perfil</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={commonStyles.volverButton}
         onPress={() =>
-          navigation.replace('Home')
+          navigation.navigate('Home')
         }
       >
         <Text style={commonStyles.buttonText}>Volver a la Home</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={commonStyles.logoutButton}
-        onPress={logout}
+        onPress={() => navigation.navigate('Salir')}
       >
         <Text style={commonStyles.buttonText}>Cerrar sesion</Text>
       </TouchableOpacity>

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Image, View } from 'react-native';
+import { Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import HomeIcon from '@mui/icons-material/Home';
@@ -12,7 +12,10 @@ import Login from './screens/Login'
 import SignUp from './screens/SignUp'
 import FormPerfil from './screens/FormPerfil'
 import Perfil from './screens/Perfil'
-import Logout from './screens/Logout';
+import Logout from './screens/Logout'
+import Producto from './screens/Producto'
+import Comprar from './screens/Comprar'
+import CompraExitosa from './screens/CompraExitosa'
 
 
 const Tab = createBottomTabNavigator()
@@ -41,6 +44,19 @@ function ProfileStackScreen() {
   )
 }
 
+function HomeStackScreen() {
+  const HomeStack = createNativeStackNavigator()
+
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen options={{ headerShown: false }} name="HomePage" component={Home}></HomeStack.Screen>
+      <HomeStack.Screen options={{ headerShown: false }} name="Producto" component={Producto}></HomeStack.Screen>
+      <HomeStack.Screen options={{ headerShown: false }} name="Comprar" component={Comprar}></HomeStack.Screen>
+      <HomeStack.Screen options={{ headerShown: false }} name="CompraExitosa" component={CompraExitosa}></HomeStack.Screen>
+    </HomeStack.Navigator>
+  )
+}
+
 function HomeTabs() {
   return (
     <Tab.Navigator screenOptions={({ route }) => ({
@@ -55,10 +71,10 @@ function HomeTabs() {
           return <LogoutIcon color={color} />
         }
       },
-      tabBarActiveTintColor: 'blue',
+      tabBarActiveTintColor: '#3483fa',
       tabBarInactiveTintColor: 'gray',
     })}>
-      <Tab.Screen options={{ headerShown: false }} name="Home" component={Home} />
+      <Tab.Screen options={{ headerShown: false }} name="Home" component={HomeStackScreen} />
       <Tab.Screen options={{ headerShown: false }} name="Perfil" component={ProfileStackScreen} />
       <Tab.Screen options={{ headerShown: false }} name="Salir" component={Logout} />
     </Tab.Navigator>
