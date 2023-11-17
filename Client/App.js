@@ -2,10 +2,11 @@ import { StyleSheet, SafeAreaView } from 'react-native'
 import Navigator from './Navigator'
 import React, { useState, useEffect } from 'react'
 import { initializeApp } from "firebase/app"
-import { getFirestore } from "firebase/firestore";
-import { dbContext } from './context/dbContext';
-import { userContext } from './context/userContext';
+import { getFirestore } from "firebase/firestore"
+import { dbContext } from './context/dbContext'
+import { userContext } from './context/userContext'
 import { productsContext } from './context/productsContext'
+import { carritoContext } from './context/carritoContext'
 
 const firebaseConfig = {
   apiKey: "AIzaSyD41FqYWlvl6ZT6Nc_yhq20lghkt-NXZC8",
@@ -24,6 +25,7 @@ const database = getFirestore(app)
 export default function App() {
   const [user, setUser] = useState()
   const [products, setProducts] = useState([])
+  const [carrito, setCarrito] = useState([])
 
   const limit = 100
   const url = `https://dummyjson.com/products?limit=${limit}&skip=0`
@@ -52,9 +54,11 @@ export default function App() {
     <dbContext.Provider value={database}>
       <userContext.Provider value={{ user, setUser }}>
         <productsContext.Provider value={{ products, setProducts }}>
-          <SafeAreaView style={styles.container}>
-            <Navigator />
-          </SafeAreaView>
+          <carritoContext.Provider value={{ carrito, setCarrito }}>
+            <SafeAreaView style={styles.container}>
+              <Navigator />
+            </SafeAreaView>
+          </carritoContext.Provider>
         </productsContext.Provider>
       </userContext.Provider>
     </dbContext.Provider>

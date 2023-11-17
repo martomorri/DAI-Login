@@ -1,10 +1,10 @@
-import { ScrollView, Text, TouchableOpacity } from 'react-native'
+import { ScrollView, Text } from 'react-native'
 import React from 'react'
 import { commonStyles } from '../styles'
 import { productsContext } from '../context/productsContext'
 import Card from '../components/Card'
 
-export default function Home({ navigation }) {
+export default function Home() {
     const { products } = React.useContext(productsContext)
 
     return (

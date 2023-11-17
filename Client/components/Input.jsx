@@ -5,19 +5,21 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 const Input = (props) => {
     const [secureText, setSecureText] = React.useState(props.secureTextEntry)
-    const [visibility, setVisibility] = React.useState({v: false, obj: <VisibilityIcon />})
+    const [visibility, setVisibility] = React.useState({ v: false, obj: <VisibilityIcon /> })
+    const [value, setValue] = React.useState("")
 
     const actualizar = (text) => {
+        setValue(text)
         if (props.label === 'Mail' || props.label === 'Nombre') props.setUsername(text)
         else if (props.label === 'Contraseña' || props.label === 'Apellido') props.setPassword(text)
     }
 
     const updateVisibility = () => {
-        !visibility.v ? setVisibility({v: true, obj: <VisibilityOffIcon />}) : setVisibility({v: false, obj: <VisibilityIcon />})
+        !visibility.v ? setVisibility({ v: true, obj: <VisibilityOffIcon /> }) : setVisibility({ v: false, obj: <VisibilityIcon /> })
         secureText ? setSecureText(false) : setSecureText(true)
     }
 
-    const visibilityIcon = props.secureTextEntry ? visibility.obj : <></>
+    const visibilityIcon = props.secureTextEntry ? visibility.obj : ""
 
     return (
         <View style={styles.container}>
@@ -27,10 +29,13 @@ const Input = (props) => {
                 style={styles.input}
                 placeholder={props.placeholder}
                 onChangeText={(text) => actualizar(text)}
+                inputMode={props.inputMode}
+                maxLength={props.maxLength}
             />
-            <TouchableOpacity style={styles.visibilityButton} onPress={updateVisibility}>
+            {visibilityIcon !== "" ? <TouchableOpacity style={styles.visibilityButton} onPress={updateVisibility}>
                 {visibilityIcon}
-            </TouchableOpacity>
+            </TouchableOpacity> : <></>}
+            {value.length < props.minLength ? <Text style={{color: "red"}}>Debe ingresar al menos {props.minLength} caracteres</Text> : <></>}
         </View>
     );
 };

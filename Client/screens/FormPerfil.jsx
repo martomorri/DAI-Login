@@ -51,8 +51,8 @@ export default function FormPerfil({ route, navigation }) {
     return (
         <View style={commonStyles.container}>
             <Text style={commonStyles.header}>Bienvenido</Text>
-            <Input label='Nombre' placeholder='Ingrese su Nombre' setUsername={setNombre} secureTextEntry={false} />
-            <Input label='Apellido' placeholder='Ingrese su Apellido' setPassword={setApellido} secureTextEntry={false} />
+            <Input label='Nombre' placeholder='Ingrese su Nombre' setUsername={setNombre} secureTextEntry={false} inputMode="text" />
+            <Input label='Apellido' placeholder='Ingrese su Apellido' setPassword={setApellido} secureTextEntry={false} inputMode="text" />
             <TouchableOpacity style={commonStyles.editButton} onPress={crearPerfil}>
                 <Text style={commonStyles.buttonText}>Cargar Datos</Text>
             </TouchableOpacity>

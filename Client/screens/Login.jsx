@@ -32,8 +32,8 @@ function Login({ navigation }) {
   return (
     <View style={commonStyles.container}>
       <Text style={commonStyles.header}>Iniciar sesión</Text>
-      <Input label='Mail' placeholder='Ingrese su Mail' setUsername={setUsername} secureTextEntry={false} />
-      <Input label='Contraseña' placeholder='Ingrese su Contraseña' setPassword={setPassword} secureTextEntry={true} />
+      <Input label='Mail' placeholder='Ingrese su Mail' setUsername={setUsername} secureTextEntry={false} inputMode="email" />
+      <Input label='Contraseña' placeholder='Ingrese su Contraseña' setPassword={setPassword} secureTextEntry={true} inputMode="text" />
       <TouchableOpacity style={commonStyles.editButton} onPress={login}>
         <Text style={commonStyles.buttonText}>Ingresar</Text>
       </TouchableOpacity>
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   message: {
     padding: 10,
     fontSize: 18,
-    color: 'black'
+    color: 'red'
   },
   link: {
     color: 'blue',

@@ -1,10 +1,11 @@
 import * as React from 'react'
-import { Image } from 'react-native';
+import { Image } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import HomeIcon from '@mui/icons-material/Home';
-import LogoutIcon from '@mui/icons-material/Logout';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import HomeIcon from '@mui/icons-material/Home'
+import LogoutIcon from '@mui/icons-material/Logout'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { useIsFocused } from '@react-navigation/native'
 import Home from './screens/Home'
@@ -16,6 +17,7 @@ import Logout from './screens/Logout'
 import Producto from './screens/Producto'
 import Comprar from './screens/Comprar'
 import CompraExitosa from './screens/CompraExitosa'
+import Carrito from './screens/Carrito'
 
 
 const Tab = createBottomTabNavigator()
@@ -67,6 +69,8 @@ function HomeTabs() {
           return <HomeIcon color={color} />
         } else if (route.name === 'Perfil') {
           return <AccountCircleIcon color={color} />
+        } else if (route.name === 'Carrito') {
+          return <ShoppingCartIcon color={color} />
         } else if (route.name === 'Salir') {
           return <LogoutIcon color={color} />
         }
@@ -76,6 +80,7 @@ function HomeTabs() {
     })}>
       <Tab.Screen options={{ headerShown: false }} name="Home" component={HomeStackScreen} />
       <Tab.Screen options={{ headerShown: false }} name="Perfil" component={ProfileStackScreen} />
+      <Tab.Screen options={{ headerShown: false }} name="Carrito" component={Carrito} />
       <Tab.Screen options={{ headerShown: false }} name="Salir" component={Logout} />
     </Tab.Navigator>
   )
@@ -83,11 +88,11 @@ function HomeTabs() {
 
 function LogoTitle() {
   return (
-    <Image
-      style={{ width: 100, height: undefined, aspectRatio: 1.6 }}
-      source={{ uri: "https://edicomgroup.es/dam/jcr:713680c7-7c2e-4145-bd94-2f7b5de20bd6/mercadolibre_integration.png" }}
-    />
-  );
+      <Image
+        style={{ width: 100, height: undefined, aspectRatio: 1.6 }}
+        source={{ uri: "https://edicomgroup.es/dam/jcr:713680c7-7c2e-4145-bd94-2f7b5de20bd6/mercadolibre_integration.png" }}
+      />
+  )
 }
 
 export default function Navigator() {
