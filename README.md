@@ -77,7 +77,7 @@ Los requisitos necesarios son tener Node.js y NPM intalados en el dispositivo.
 * Clonar el repositorio
   
    ```sh
-   git clone --depth 1 https://github.com/martomorri/DAI-Login.git
+   git clone --depth 1 https://github.com/martomorri/E-Commerce_Mobile_DAI.git
    ```
 * Abrir y ejecutar el proyecto de React Native (RN)
   
