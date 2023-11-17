@@ -1,5 +1,6 @@
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
-
+import Input from '../components/Input'
+import { Link } from '@react-navigation/native'
 import React from 'react'
 import { commonStyles } from '../styles'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
@@ -22,7 +23,7 @@ function Login({ navigation }) {
       updateUserContext()
       const updateMessage = async () => await setMessage('Usuario autenticado correctamente')
       updateMessage()
-      navigation.navigate('Home')
+      navigation.navigate('Inicio')
     })
     .catch((error) => {
       console.log(error)

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Image, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import HomeIcon from '@mui/icons-material/Home';
@@ -11,6 +12,7 @@ import Login from './screens/Login'
 import SignUp from './screens/SignUp'
 import FormPerfil from './screens/FormPerfil'
 import Perfil from './screens/Perfil'
+import Logout from './screens/Logout';
 
 
 const Tab = createBottomTabNavigator()
@@ -49,8 +51,8 @@ function HomeTabs() {
           return <HomeIcon color={color} />
         } else if (route.name === 'Perfil') {
           return <AccountCircleIcon color={color} />
-        } else if (route.name === 'Logout') {
-          return <LogoutIcon />
+        } else if (route.name === 'Salir') {
+          return <LogoutIcon color={color} />
         }
       },
       tabBarActiveTintColor: 'blue',
@@ -58,17 +60,36 @@ function HomeTabs() {
     })}>
       <Tab.Screen options={{ headerShown: false }} name="Home" component={Home} />
       <Tab.Screen options={{ headerShown: false }} name="Perfil" component={ProfileStackScreen} />
-      <Tab.Screen options={{ headerShown: false }} name="Logout" component={Logout} />
+      <Tab.Screen options={{ headerShown: false }} name="Salir" component={Logout} />
     </Tab.Navigator>
   )
+}
+
+function LogoTitle() {
+  return (
+    <Image
+      style={{ width: 100, height: undefined, aspectRatio: 1.6 }}
+      source={{ uri: "https://edicomgroup.es/dam/jcr:713680c7-7c2e-4145-bd94-2f7b5de20bd6/mercadolibre_integration.png" }}
+    />
+  );
 }
 
 export default function Navigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen options={{ headerShown: false }} name="Inicio" component={HomeTabs} />
-        <Stack.Screen options={{ headerShown: false }} name="Authentication" component={AuthStackScreen} />
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#e0e00d',
+          },
+          headerTitleAlign: 'center',
+          headerBackVisible: false,
+          headerLeft: null,
+          headerTitle: () => <LogoTitle />
+        }}
+      >
+        <Stack.Screen name="Authentication" component={AuthStackScreen} />
+        <Stack.Screen name="Inicio" component={HomeTabs} />
       </Stack.Navigator>
     </NavigationContainer>
   );
