@@ -1,12 +1,12 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <img src="https://static.vecteezy.com/system/resources/previews/014/219/604/non_2x/safety-login-page-3d-illustration-free-png.png" alt="Logo" width="80" height="80">
+  <img src="https://http2.mlstatic.com/static/org-img/homesnw/mercado-libre.png?v=2" alt="Logo" width="80" height="80">
 
-  <h3 align="center">Login DAI</h3>
+  <h3 align="center">E-Commerce Mobile</h3>
 
   <p align="center">
-    Un ejemplo de Login y Registro con React Native y Firebase Firestore.
+    Una aplicación móvil de compra de productos.
     <br />
   </p>
 </div>
@@ -51,7 +51,9 @@ Este proyecto se trata de realizar un ejemplo de registro (conectado con una bas
 
 Estos son los frameworks/librerias utilizados en este proyecto.
 
-* [![React Native][ReactNative]][ReactNative-url]
+* React Native
+* npm
+* expo
 
 <p align="right"><a href="#readme-top">Volver al inicio</a></p>
 
@@ -100,7 +102,7 @@ Los requisitos necesarios son tener Node.js y NPM intalados en el dispositivo.
 <!-- EJEMPLOS DE USO -->
 ## Ejemplos de Uso
 
-Este proyecto puede ser utilizado para generar un registro simple para cualquier aplicación mobile.
+Este proyecto puede ser utilizado como un ejemplo de compra de productos online.
 
 <p align="right"><a href="#readme-top">Volver al inicio</a></p>
 
@@ -112,11 +114,14 @@ Este proyecto puede ser utilizado para generar un registro simple para cualquier
 - [x] Cloud Firestore
 - [x] Login
 - [x] Registro
-- [x] Home
+- [x] Home (Mostrar Productos)
 - [x] Cerrar sesion
 - [x] Perfil
     - [x] Crear Perfil
     - [x] Editar Perfil
+- [x] Ver Producto
+- [x] Form de Comprar Producto
+- [x] Carrito
 
 <p align="right"><a href="#readme-top">Volver al inicio</a></p>
 
@@ -129,8 +134,3 @@ Estas son las librerias y recursos utilizados en nuestro proyecto
 
 <p align="right"><a href="#readme-top">Volver al inicio</a></p>
 
-
-
-<!-- MARKDOWN LINKS E IMAGENES -->
-[ReactNative]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[ReactNative-url]: https://reactnative.dev/
