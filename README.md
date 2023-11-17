@@ -131,6 +131,7 @@ Estas son las librerias y recursos utilizados en nuestro proyecto
 
 * [React Navigation](https://reactnavigation.org/)
 * [Firebase](https://firebase.google.com/?hl=es-419)
+* [react-native-vector-icons]
 
 <p align="right"><a href="#readme-top">Volver al inicio</a></p>
 
