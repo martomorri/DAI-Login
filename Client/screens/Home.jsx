@@ -1,4 +1,4 @@
-import { ScrollView, Text } from 'react-native'
+import { ScrollView, Text, View } from 'react-native'
 import React from 'react'
 import { commonStyles } from '../styles'
 import { productsContext } from '../context/productsContext'
@@ -11,7 +11,11 @@ export default function Home() {
         <ScrollView style={commonStyles.container}>
             <Text style={commonStyles.header}>Productos</Text>
             {products.map(p => {
-                if (p.id <= 6) return <Card product={p} />
+                if (p.id <= 6) return (
+                    <View style={{marginBottom: 20}}>
+                        <Card product={p} />
+                    </View>
+                )
             })}
         </ScrollView>
     )

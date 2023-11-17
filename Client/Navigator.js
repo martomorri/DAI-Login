@@ -2,10 +2,11 @@ import * as React from 'react'
 import { Image } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import HomeIcon from '@mui/icons-material/Home'
-import LogoutIcon from '@mui/icons-material/Logout'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import Icon from 'react-native-vector-icons/MaterialIcons'
+// import HomeIcon from '@mui/icons-material/Home'
+// import LogoutIcon from '@mui/icons-material/Logout'
+// import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { useIsFocused } from '@react-navigation/native'
 import Home from './screens/Home'
@@ -64,15 +65,15 @@ function HomeTabs() {
     <Tab.Navigator screenOptions={({ route }) => ({
       tabBarIcon: () => {
         const isFocused = useIsFocused()
-        const color = isFocused ? "primary" : ""
+        const color = isFocused ? "#3483fa" : "black"
         if (route.name === 'Home') {
-          return <HomeIcon color={color} />
+          return <Icon name="home" size={20} color={color} />
         } else if (route.name === 'Perfil') {
-          return <AccountCircleIcon color={color} />
+          return <Icon name="account-circle" size={20} color={color} />
         } else if (route.name === 'Carrito') {
-          return <ShoppingCartIcon color={color} />
+          return <Icon name="shopping-cart" size={20} color={color} />
         } else if (route.name === 'Salir') {
-          return <LogoutIcon color={color} />
+          return <Icon name="logout" size={20} color={color} />
         }
       },
       tabBarActiveTintColor: '#3483fa',
@@ -88,10 +89,10 @@ function HomeTabs() {
 
 function LogoTitle() {
   return (
-      <Image
-        style={{ width: 100, height: undefined, aspectRatio: 1.6 }}
-        source={{ uri: "https://edicomgroup.es/dam/jcr:713680c7-7c2e-4145-bd94-2f7b5de20bd6/mercadolibre_integration.png" }}
-      />
+    <Image
+      style={{ width: 100, height: undefined, aspectRatio: 1.6 }}
+      source={{ uri: "https://edicomgroup.es/dam/jcr:713680c7-7c2e-4145-bd94-2f7b5de20bd6/mercadolibre_integration.png" }}
+    />
   )
 }
 

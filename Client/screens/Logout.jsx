@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import { commonStyles } from "../styles";
 import { getAuth } from "firebase/auth";
 
-function Logout() {
+function Logout({ navigation }) {
     const logout = () => {
         const auth = getAuth()
         auth.signOut()

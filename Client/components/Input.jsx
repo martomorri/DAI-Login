@@ -1,11 +1,13 @@
 import React from 'react';
 import { StyleSheet, TextInput, Text, View, TouchableOpacity } from 'react-native';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 const Input = (props) => {
+    const VisibilityIcon = <Icon name="visibility" size={20} color="black" />
+    const VisibilityOffIcon = <Icon name="visibility-off" size={20} color="black" />
+
     const [secureText, setSecureText] = React.useState(props.secureTextEntry)
-    const [visibility, setVisibility] = React.useState({ v: false, obj: <VisibilityIcon /> })
+    const [visibility, setVisibility] = React.useState({ v: false, obj: VisibilityIcon })
     const [value, setValue] = React.useState("")
 
     const actualizar = (text) => {
@@ -15,7 +17,7 @@ const Input = (props) => {
     }
 
     const updateVisibility = () => {
-        !visibility.v ? setVisibility({ v: true, obj: <VisibilityOffIcon /> }) : setVisibility({ v: false, obj: <VisibilityIcon /> })
+        !visibility.v ? setVisibility({ v: true, obj: VisibilityOffIcon }) : setVisibility({ v: false, obj: VisibilityIcon })
         secureText ? setSecureText(false) : setSecureText(true)
     }
 
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
         margin: 5,
         position: "absolute",
         right: 0,
-        bottom: 10
+        bottom: "14%"
     }
 });
 

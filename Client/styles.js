@@ -64,9 +64,9 @@ export const commonStyles = StyleSheet.create({
         aspectRatio: 1.75,
     },
     price: {
-        fontSize: 20, 
-        paddingLeft: 10, 
-        color: "#3b3a3a" 
+        fontSize: 20,
+        paddingLeft: 10,
+        color: "#3b3a3a"
     },
     text: {
         fontSize: 16,

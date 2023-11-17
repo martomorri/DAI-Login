@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import { commonStyles } from "../styles";
-import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 function CompraExitosa({ navigation }) {
     return (
@@ -8,7 +8,7 @@ function CompraExitosa({ navigation }) {
             <View style={{alignItems: "center"}}>
                 <Text style={commonStyles.header}>Compra exitosa</Text>
                 <Text style={commonStyles.text}>Su compra ha sido realizada con éxito</Text>
-                <TaskAltIcon style={{padding: 10}} color="success" sx={{fontSize: 100}} />
+                <Icon style={{padding: 10}} name="task-alt" size={100} color="green" />
                 <TouchableOpacity style={commonStyles.editButton} onPress={() => navigation.navigate('HomePage')}>
                     <Text style={commonStyles.buttonText}>Seguir comprando</Text>
                 </TouchableOpacity>

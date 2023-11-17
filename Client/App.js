@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import Navigator from './Navigator'
 import React, { useState, useEffect } from 'react'
 import { initializeApp } from "firebase/app"
@@ -34,7 +34,6 @@ export default function App() {
     fetch(url)
       .then(res => res.json())
       .then(res => {
-        console.log(res)
         setProducts((prevProductos) => [
           ...prevProductos,
           ...res.products.map((p) => ({
@@ -55,9 +54,9 @@ export default function App() {
       <userContext.Provider value={{ user, setUser }}>
         <productsContext.Provider value={{ products, setProducts }}>
           <carritoContext.Provider value={{ carrito, setCarrito }}>
-            <SafeAreaView style={styles.container}>
+            <View style={styles.container}>
               <Navigator />
-            </SafeAreaView>
+            </View>
           </carritoContext.Provider>
         </productsContext.Provider>
       </userContext.Provider>
@@ -68,7 +67,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
+    padding: 0,
     backgroundColor: "#fff"
   }
 })
